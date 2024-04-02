@@ -1,10 +1,18 @@
 .grid-discussion{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     justify-content: center;
     place-items: center;
     margin-left: auto;
     margin-right: auto;
+    scroll-snap-type: y mandatory; 
+    scrollbar-width: 5px;
+    scrollbar-color: #EFDCAC #1ccd7d; 
+    overflow-y: scroll; /
+}
+
+.grid-discussion > * {
+    scroll-snap-align: center; /* Ensure each item snaps to the center */
 }
 
 nav{
@@ -16,6 +24,7 @@ nav{
     align-items: center;
     color: #EFDCAC;
     justify-content: space-evenly;
+    z-index: 999999;
 }
 
 nav a{
@@ -55,6 +64,7 @@ h1{
     color: #EFDCAC;
     font-weight: bold;
     text-align: center;
+    margin: 10px 0;
 }
 h2{
     font-weight: bolder;
@@ -62,6 +72,7 @@ h2{
     padding: 5px;
     text-align: center;
     background-color: #bcba90;
+    margin: 10px 0;
 }
 h3{
     font-size: large;
@@ -78,6 +89,7 @@ body{
 }
 
 p{
+    font-size: 24px;
     padding: 10px;
 }
 footer{
@@ -102,7 +114,7 @@ footer{
 
 .offpage:focus{
     position: relative;
-    left:10px;         
+    left: 150px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -122,7 +134,7 @@ footer{
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-left: 175px;
+        padding-left: 150px;
         position: relative; /* Ensure z-index works */
         z-index: 1;
     }
@@ -158,11 +170,11 @@ footer{
     }
 
     h2 {
-        font-size: 22px; /* Adjust font size for better readability */
+        font-size: 26px; /* Adjust font size for better readability */
     }
 
     h3 {
-        font-size: 18px; /* Adjust font size for better readability */
+        font-size: 24px; /* Adjust font size for better readability */
     }
 
     .centerimgs {
@@ -173,7 +185,42 @@ footer{
 img {
     transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
 }
+@keyframes enlarge-area {
+    from {margin: 10px auto 0 auto}
+    to {margin: 30px auto 24px auto}
+}
 
 img:hover {
+    animation: enlarge-area;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
     transform: scale(1.1); /* Increase the scale on hover */
+}
+
+@media only screen and (min-width: 1050px) {
+    .grid-discussion {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px; /* Add some space between items for better readability */
+    }
+    
+    h1 {
+        font-size: 32px; 
+        position: relative; /* Ensure z-index works */
+        z-index: 2;/* Adjust font size for better readability */
+        margin-top: 18px;
+    }
+
+    h2 {
+        padding: 20px;
+        font-size: 30px; /* Adjust font size for better readability */
+    }
+
+    h3 {
+        font-size: 28px; /* Adjust font size for better readability */
+    }
+
+    .centerimgs {
+        width: 50%; /* Adjust image width for better display on desktops */
+    }
 }
