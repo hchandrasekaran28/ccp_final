@@ -14,7 +14,6 @@
 .grid-discussion > * {
     scroll-snap-align: center; /* Ensure each item snaps to the center */
 }
-
 nav{
     background-color: #00030e;
     overflow: hidden;
@@ -55,6 +54,9 @@ nav a.active{
         animation-play-state: paused;
         visibility: hidden;
     }
+    h1 {
+        animation: none; /* Turn off animation */
+    }
 }
 
 h1{
@@ -64,8 +66,28 @@ h1{
     color: #EFDCAC;
     font-weight: bold;
     text-align: center;
-    margin: 10px 0;
+    margin: 0;
+    white-space: nowrap;
+    animation: scroll 10s linear infinite;
 }
+
+.scrolling-container{
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background-color: #45462a;
+    /* margin: 5px 0; */
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
 h2{
     font-weight: bolder;
     font-size: 25px;
@@ -117,11 +139,45 @@ footer{
     left: 150px;
 }
 
+.icon {
+    display: none;
+}
+
 @media only screen and (min-width: 768px) {
     .grid-discussion {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 20px; /* Add some space between items for better readability */
+    }
+
+    .icon {
+        display: block;
+        width: 40px;
+        position: absolute;
+        top: 40px;
+        border: none;
+        cursor: pointer;
+        appearance: none;
+        background-color: inherit;
+        padding: 0;
+    }
+
+    .hidden {
+        width: 60px;
+    }
+    .hidden ul {
+        display: none;
+    }
+    .hidden > button {
+        top: 5px;
+    }
+
+    .bigger-main {
+        padding-left: 50px;
+    }
+    
+    .icon > img {
+        width: inherit;
     }
 
     body {
@@ -203,7 +259,7 @@ img:hover {
         grid-template-columns: repeat(4, 1fr);
         gap: 10px; /* Add some space between items for better readability */
     }
-    
+
     h1 {
         font-size: 32px; 
         position: relative; /* Ensure z-index works */
